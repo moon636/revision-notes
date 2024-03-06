@@ -151,7 +151,23 @@ Task 2: 30 hours [Prototype – 48] <br>
 Task 3a: 15 hours [Feedback – 24] <br>
 Task 3b: 2 hours [Evaluation – 15] <br>
 
-## Code Snippets
+## Setting up API
+
+### Installing NewtonSoft
+
+Project -> Manage NuGet Packages -> Search "Newtonsoft.Json" -> Install
+
+### Using NewtonSoft In Code
+#### Add to top of code
+	using Newtonsoft.Json;
+	using Newtonsoft.Json.Linq;
+#### Api Code Example using NewtonSoft
+        HttpResponseMessage response = await httpClient.GetAsync(fullUrl);
+        string payload = await response.Content.ReadAsStringAsync();
+
+        JObject payloadObject = JObject.Parse(payload);
+
+## C# Executing Database Procedures
 
 #### Setting up ConnectionString and SqlConnecction
 
@@ -182,6 +198,8 @@ Task 3b: 2 hours [Evaluation – 15] <br>
         }
 	    
 	sqlConnection.Close();
+
+## Stored Procedures Examples
 #### Add Record Procedure (Adding record to database)
 	    // Sql Command
 	    SqlCommand sqlCommand = new SqlCommand("AddRecord",sqlConnection);
