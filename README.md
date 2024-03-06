@@ -153,11 +153,13 @@ Task 3b: 2 hours [Evaluation – 15] <br>
 
 ## Code Snippets
 
-//Execute stored procedure example
+#### Setting up ConnectionString and SqlConnecction
 
 	const string connectionString = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFileName = C:\\Users\\m2201882\\OneDrive - Middlesbrough College\\Documents\\YEAR 2\\OSS MOCk\\WeatherForecastApp\\WeatherForecastApp\\database\\userData.mdf";
 
 	SqlConnection sqlConnection = new SqlConnection(connectionString);
+ 
+#### Get High Contrast Procedure (Returning data from database)
 	    
 	SqlCommand sqlCommand = new SqlCommand("GetHighContrast", sqlConnection);
 	sqlCommand.CommandType = CommandType.StoredProcedure;
@@ -180,9 +182,63 @@ Task 3b: 2 hours [Evaluation – 15] <br>
         }
 	    
 	sqlConnection.Close();
+#### Add Record Procedure (Adding record to database)
+	    // Sql Command
+	    SqlCommand sqlCommand = new SqlCommand("AddRecord",sqlConnection);
+	    sqlCommand.CommandType = CommandType.StoredProcedure;
 
+	    // Input Validation
+	    bool userNameValid = string.IsNullOrWhiteSpace(txtSignUpUsername.Text);
+	    bool passwordValid = string.IsNullOrWhiteSpace(txtSignUpPassword.Text);
+	    bool emailValid = string.IsNullOrWhiteSpace(txtSignUpEmail.Text);
+	    bool locationValid = string.IsNullOrWhiteSpace(txtSignUpLocation.Text);
 
+	    if (!userNameValid && !passwordValid && !emailValid && !locationValid)
+	    {
+
+		string hashedPassword = ComputeSHA256Hash(txtSignUpPassword.Text);
+
+		sqlCommand.Parameters.AddWithValue("Username", txtSignUpUsername.Text);
+		sqlCommand.Parameters.AddWithValue("Password", hashedPassword);
+		sqlCommand.Parameters.AddWithValue("Email", txtSignUpEmail.Text);
+		sqlCommand.Parameters.AddWithValue("Location", txtSignUpLocation.Text);
+		sqlCommand.Parameters.AddWithValue("HighContrast", 0);
+
+		sqlConnection.Open();
+		sqlCommand.ExecuteNonQuery();
+		sqlConnection.Close();
+
+		txtSignUpUsername.Text = "";
+		txtSignUpEmail.Text = "";
+		txtSignUpPassword.Text = "";
+		txtSignUpLocation.Text = "";
+
+		MessageBox.Show("Registered Successfully");
+
+		LoginForm loginForm = new LoginForm();
+		loginForm.Show();
+
+		this.Close();
+	    }
+	    else
+	    {
+		MessageBox.Show("One or more invalid input");
+	    }
+     
+#### Add Password Procedure (Updating value in database)
+
+		SqlCommand sqlCommand = new SqlCommand("UpdatePassword", sqlConnection);
+		sqlCommand.CommandType = CommandType.StoredProcedure;
+
+		sqlCommand.Parameters.AddWithValue("Username", username);
+		sqlCommand.Parameters.AddWithValue("PasswordValue", ComputeSHA256Hash(txtChangePassword.Text));
+
+		sqlConnection.Open();
+		sqlCommand.ExecuteNonQuery();
+		sqlConnection.Close();
+		
 ## Database Definition
+
 	CREATE TABLE [dbo].[Accounts] (
 		[Id]           INT            IDENTITY (1, 1) NOT NULL,
 		[Username]     NVARCHAR (50)  NULL,
