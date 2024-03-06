@@ -195,7 +195,7 @@ Task 3b: 2 hours [Evaluation – 15] <br>
 
 ## Stored Procedures
 
-##### Add Record
+#### Add Record
 
 	CREATE PROCEDURE [dbo].[AddRecord]
 		@Username NVARCHAR(50),
@@ -207,7 +207,7 @@ Task 3b: 2 hours [Evaluation – 15] <br>
 		INSERT INTO Accounts VALUES(@Username,@Password,@Email,@Location,@HighContrast)
 
 
-##### Get Location
+#### Get Location
 
 	CREATE PROCEDURE [dbo].[GetLocation]
 		@Username nvarchar(50)
@@ -218,7 +218,7 @@ Task 3b: 2 hours [Evaluation – 15] <br>
 
 
 
-##### Update Password
+#### Update Password
 
 	CREATE PROCEDURE [dbo].[UpdatePassword]
 		@Username nvarchar(50),
