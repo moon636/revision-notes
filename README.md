@@ -155,30 +155,31 @@ Task 3b: 2 hours [Evaluation – 15] <br>
 
 //Execute stored procedure example
 
-	    const string connectionString = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFileName = C:\\Users\\m2201882\\OneDrive - Middlesbrough College\\Documents\\YEAR 2\\OSS MOCk\\WeatherForecastApp\\WeatherForecastApp\\database\\userData.mdf";
+	const string connectionString = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFileName = C:\\Users\\m2201882\\OneDrive - Middlesbrough College\\Documents\\YEAR 2\\OSS MOCk\\WeatherForecastApp\\WeatherForecastApp\\database\\userData.mdf";
 
-            SqlConnection sqlConnection = new SqlConnection(connectionString);
+	SqlConnection sqlConnection = new SqlConnection(connectionString);
 	    
-	    SqlCommand sqlCommand = new SqlCommand("GetHighContrast", sqlConnection);
-            sqlCommand.CommandType = CommandType.StoredProcedure;
+	SqlCommand sqlCommand = new SqlCommand("GetHighContrast", sqlConnection);
+	sqlCommand.CommandType = CommandType.StoredProcedure;
 
-            sqlCommand.Parameters.AddWithValue("Username", username);
+	sqlCommand.Parameters.AddWithValue("Username", username);
 
-            sqlConnection.Open();
+	sqlConnection.Open();
 	    
-            SqlDataReader highContrastReturned = sqlCommand.ExecuteReader();
-            if (highContrastReturned.Read())
-            {
-                if (highContrastReturned[0].ToString() == "1")
-                {
-                    this.BackColor = Color.FromArgb(0, 0, 15);
-                } else
-                {
-                    this.BackColor = Color.FromArgb(35,35,80);
-                }
-            }
+	SqlDataReader highContrastReturned = sqlCommand.ExecuteReader();
+	if (highContrastReturned.Read())
+	{
+		if (highContrastReturned[0].ToString() == "1")
+		{
+		this.BackColor = Color.FromArgb(0, 0, 15);
+		} 
+  		else
+		{
+		this.BackColor = Color.FromArgb(35,35,80);
+        	}
+        }
 	    
-            sqlConnection.Close();
+	sqlConnection.Close();
 
 
 ## Stored Procedures
