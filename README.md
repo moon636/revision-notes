@@ -1,4 +1,4 @@
-# Task 1 (Todo-List)
+# Task 1 (Todo-List)a
 ## Activity A (I) <br>
 ### Planning and system requirements <br>
 •	Specify the minimum system requirements to run the application. <br>
@@ -195,7 +195,7 @@ Task 3b: 2 hours [Evaluation – 15] <br>
 
 ## Stored Procedures
 
-Add Record
+##### Add Record
 
 	CREATE PROCEDURE [dbo].[AddRecord]
 		@Username NVARCHAR(50),
@@ -207,7 +207,7 @@ Add Record
 		INSERT INTO Accounts VALUES(@Username,@Password,@Email,@Location,@HighContrast)
 
 
-Get Location
+##### Get Location
 
 	CREATE PROCEDURE [dbo].[GetLocation]
 		@Username nvarchar(50)
@@ -218,7 +218,7 @@ Get Location
 
 
 
-Update Password
+##### Update Password
 
 	CREATE PROCEDURE [dbo].[UpdatePassword]
 		@Username nvarchar(50),
