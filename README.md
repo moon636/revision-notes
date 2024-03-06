@@ -156,16 +156,14 @@ Task 3b: 2 hours [Evaluation – 15] <br>
 ### Installing NewtonSoft
 
 Project -> Manage NuGet Packages -> Search "Newtonsoft.Json" -> Install
-
-### Using NewtonSoft In Code
 #### Add to top of code
 	using Newtonsoft.Json;
-	using Newtonsoft.Json.Linq;
+ 	using Newtonsoft.Json.Linq;
 #### Api Code Example using NewtonSoft
-        HttpResponseMessage response = await httpClient.GetAsync(fullUrl);
-        string payload = await response.Content.ReadAsStringAsync();
+	HttpResponseMessage response = await httpClient.GetAsync(fullUrl);
+ 	string payload = await response.Content.ReadAsStringAsync();
 
-        JObject payloadObject = JObject.Parse(payload);
+	JObject payloadObject = JObject.Parse(payload);
 
 ## C# Executing Database Procedures
 
