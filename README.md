@@ -189,63 +189,42 @@ Task 3b: 2 hours [Evaluation – 15] <br>
     		[Password]     NVARCHAR (200) NULL,
    		[Email]        NVARCHAR (50)  NULL,
    		[Location]     NVARCHAR (50)  NULL,
-   		[HighContrast] INT            DEFAULT ((0)) NOT NULL,
+   		[HighContrast] INT            DEFAULT 0 NOT NULL,
    		CONSTRAINT [PK_Accounts] PRIMARY KEY CLUSTERED ([Id] ASC)
 	);
 
 ## Stored Procedures
 
-ADD RECORD
+Add Record
 
-CREATE PROCEDURE [dbo].[AddRecord]
-
-(
-	@username nvarchar(50),
-	@password nvarchar(200)
-
-)
-
-as
-
-begin
-
-	Insert into UserDetails values (@username, @password)
-
-End
+	CREATE PROCEDURE [dbo].[AddRecord]
+		@Username NVARCHAR(50),
+		@Password NVARCHAR(200),
+		@Email NVARCHAR(50),
+		@Location NVARCHAR(50),
+		@HighContrast INT
+	AS
+		INSERT INTO Accounts VALUES(@Username,@Password,@Email,@Location,@HighContrast)
 
 
-Select all details from database
+Get Location
 
-CREATE PROCEDURE [dbo].[GetUserDetails]
-
-as
-
-begin
-
-select * from UserDetails
-
-End
+	CREATE PROCEDURE [dbo].[GetLocation]
+		@Username nvarchar(50)
+	AS
+		SELECT Location from Accounts
+		WHERE Username = @Username
 
 
 
 
-UPDATE RECORD IN DATABASE
+Update Password
 
-CREATE PROCEDURE [dbo].[UpdateRecord]
-
-(	
-	@StdId int, 
-	@username nvarchar(50),
-	@password nvarchar(200)
-
-)
-as
-
-begin
-
-	update UserDetails
-	set username=@username,
-	password=@password
-	where Id=@StdId
-
-end
+	CREATE PROCEDURE [dbo].[UpdatePassword]
+		@Username nvarchar(50),
+		@PasswordValue nvarchar(200)
+	AS
+		UPDATE Accounts
+		SET 
+		[Password] = @PasswordValue
+		WHERE Username = @Username
