@@ -183,15 +183,15 @@ Task 3b: 2 hours [Evaluation – 15] <br>
 
 
 ## Database Definition
-CREATE TABLE [dbo].[Accounts] (
-    [Id]           INT            IDENTITY (1, 1) NOT NULL,
-    [Username]     NVARCHAR (50)  NULL,
-    [Password]     NVARCHAR (200) NULL,
-    [Email]        NVARCHAR (50)  NULL,
-    [Location]     NVARCHAR (50)  NULL,
-    [HighContrast] INT            DEFAULT ((0)) NOT NULL,
-    CONSTRAINT [PK_Accounts] PRIMARY KEY CLUSTERED ([Id] ASC)
-);
+	CREATE TABLE [dbo].[Accounts] (
+    		[Id]           INT            IDENTITY (1, 1) NOT NULL,
+    		[Username]     NVARCHAR (50)  NULL,
+    		[Password]     NVARCHAR (200) NULL,
+   		[Email]        NVARCHAR (50)  NULL,
+   		[Location]     NVARCHAR (50)  NULL,
+   		[HighContrast] INT            DEFAULT ((0)) NOT NULL,
+   		CONSTRAINT [PK_Accounts] PRIMARY KEY CLUSTERED ([Id] ASC)
+	);
 
 ## Stored Procedures
 
