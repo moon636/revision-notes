@@ -36,7 +36,8 @@
 -	List what I have been asked to do/ or what the owner wants.  
 -	List the reason they want to build this solution, start with a paragraph that explains, then list   
 -	List the benefits this might have. Start with a brief explanation and then list.  
--	Talk more on how this solution will help.  
+-	Talk more on how this solution will help.
+-	ADD STAKEHOLDERS (END USERS, CLIENT, THE COMPANY (YOU), GOVERNMENT etc.
 -	State what the client would like the system to have. Use the words [Must, should, could] and list them according to importance.  
 -	List the different parts/layers of the system like [Mobile, web, database]. Explain then list.  
 -	Create a use case diagram that visualises how the system would work.  
